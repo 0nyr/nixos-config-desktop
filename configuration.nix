@@ -64,10 +64,9 @@
     desktopManager.runXdgAutostartIfNone = true;
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true; # On 64-bit systems, whether to also install 32-bit drivers for 32-bit applications (such as Wine).
   };
 
   # Enable CUPS to print documents.
