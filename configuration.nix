@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -15,9 +15,12 @@
       ./configs/keymap.nix
       ./configs/onyr.nix
       ./configs/packages.nix
+      ./configs/sound.nix
       # GUI, desktop, and window manager configuration.
-      ./configs/gui/sway.nix
+      ./configs/gui/gnome.nix
+      #./configs/gui/sway.nix
       ./configs/gui/hyprland.nix
+      ./configs/gui/i3.nix
     ];
 
   # Bootloader.
@@ -56,11 +59,10 @@
   };
 
   # Enable the X11 windowing system.
+  services.displayManager.sddm.enable = true; # supported well by Hyprland
   services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-    windowManager.i3.enable = true;
+    enable = true; # Enable the X11 windowing system
+    #displayManager.gdm.enable = true;
     desktopManager.runXdgAutostartIfNone = true;
   };
 
@@ -71,22 +73,6 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = false;
-
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
 
   # Install firefox.
   programs.firefox.enable = true;

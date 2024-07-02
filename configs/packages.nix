@@ -36,8 +36,6 @@
     waybar # Status bar
     pamixer # for waybar audio
     rofi-wayland # Alternate application launcher for Wayland
-    xdg-desktop-portal-hyprland # XDG portals implementation for Hyprland
-    xdg-desktop-portal-gtk # GTK portals for file dialogs, screenshots, etc.
     wl-clipboard # Clipboard utilities for Wayland
     swaylock # Screen locker for Wayland
     swayidle # Idle management daemon for Wayland

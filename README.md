@@ -7,3 +7,10 @@ This configuration expects that dotfiles are setup for user `onyr`. See [my dotf
 Flake is used to make reproducible environnement.
 
 > The repository for my NixOs laptop config can be found [here](https://github.com/0nyr/nixos-config).
+
+
+
+## TODO
+
++ [ ] Fix broken gnome-keyring access for VSCode. I remarks that it work when I click on "log in through GitHub", but I need to do that for every opened VSCode window.
++ [ ] Fix discord broken screensharing that load forever.
