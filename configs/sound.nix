@@ -1,8 +1,17 @@
 { config, pkgs, lib, ...}:
 
 {
+  # sound related packages
+  environment.systemPackages = with pkgs; [
+    pavucontrol # for advanced sound control
+    alsa-utils # for alsamixer
+    qjackctl # jack audio app to control the JACK sound server daemon
+    qpwgraph # for visualizing PipeWire graph, equivalent to what qjackctl is to JACK
+    pciutils # for PCI utilities (like listing audio cards)
+  ];
+
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  hardware.pulseaudio.enable = false; # pulseaudio must be disabled when using pipewire
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

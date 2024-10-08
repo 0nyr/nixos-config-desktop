@@ -19,7 +19,7 @@
       # GUI, desktop, and window manager configuration.
       ./configs/gui/gnome.nix
       #./configs/gui/sway.nix
-      ./configs/gui/hyprland.nix
+      #./configs/gui/hyprland.nix
       ./configs/gui/i3.nix
     ];
 

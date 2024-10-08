@@ -28,7 +28,8 @@
     killall # for killing processes
     #megasync # MEGA cloud sync WARN: wait for freeimage dependency.
     networkmanagerapplet # for network applet on bar
-    pavucontrol # for advanced sound control
+    gnupg # for GPG verifs
+    keepassxc # password manager
 
     # Hyprland or Sway (Wayland) packages
     mesa-demos # for testing nvidia offloading. $ glxgears -info
@@ -60,12 +61,12 @@
     slurp # screenshot functionality
 
     # Gnome apps
-    gnome.gnome-terminal
-    gnome.nautilus
-    gnome.gnome-tweaks
-    gnome.evince # pdf reader
-    gnome.gnome-calculator
-    gnome.eog # image viewer
-    gnome.gnome-calendar
+    gnome-terminal
+    nautilus
+    gnome-tweaks
+    evince # pdf reader
+    gnome-calculator
+    eog # image viewer
+    gnome-calendar
   ];
 }
