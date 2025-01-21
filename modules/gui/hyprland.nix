@@ -1,18 +1,11 @@
 { config, pkgs, lib, ... }:
 
+# Example: https://github.com/srid/nixos-config/blob/master/modules/nixos/linux/gui/hyprland/default.nix
+
 {
   environment.systemPackages = with pkgs; [
     dunst # Notification daemon
     hyprshot # Screenshot utility
-
-    # Gnome apps
-    gnome.gnome-terminal
-    gnome.nautilus
-    gnome.gnome-tweaks
-    gnome.evince # pdf reader
-    gnome.gnome-calculator
-    gnome.eog # image viewer
-    gnome.gnome-calendar
   ];
 
   programs.hyprland.enable = true;
@@ -30,15 +23,9 @@
     ];
   };
 
-  # secret management: https://www.reddit.com/r/NixOS/comments/1auje1p/hyprland_and_secrets_management/
-  # Enable the gnome-keyring secrets vault. 
-  # Will be exposed through DBus to programs willing to store secrets.
-  services.gnome.gnome-keyring.enable = true;
   security = {
     polkit.enable = true;
     # pam.services.ags = {};
-    # security.pam.services.<yourDisplayManager>.enableGnomeKeyring = true;
-    pam.services.sddm.enableGnomeKeyring = true;
   };
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {

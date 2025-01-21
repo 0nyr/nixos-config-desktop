@@ -8,6 +8,9 @@
 
     # Minecraft grub2 theme
     minegrub-theme.url = "github:0nyr/minegrub-theme"; # my fork with some fixes
+
+    # Home manager
+    home-manager.url = "github:nix-community/home-manager";
   };
 
   outputs = {nixpkgs, ...} @ inputs: 
@@ -17,14 +20,13 @@
     #       "aarch64-linux" / "x86_64-darwin" / "aarch64-darwin"
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-    # replace whatever comes after nixosConfigurations with your hostname.
-    # My laptop configuration
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = system;
-      modules = [
-        ./configuration.nix
-        inputs.minegrub-theme.nixosModules.default
-      ];
+    # Machine-based system configurations
+    nixosConfigurations = {
+      "Aezyr-Workstation" = nixpkgs.lib.nixosSystem {
+        system = system;
+        specialArgs.inputs = inputs;
+        modules = [ ./hosts/aezyr/configuration.nix ];
+      };
     };
 
     # development shell

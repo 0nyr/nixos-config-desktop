@@ -2,30 +2,28 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   imports = [
+    # Input packages
+    inputs.minegrub-theme.nixosModules.default
+    inputs.home-manager.nixosModules.default
     # Boot
-    ./configs/boot.nix
-    # Include hardware configuration.
-    ./hardware-configuration.nix
-    # Include other configuration files.
-    ./configs/nvidia.nix
-    ./configs/fonts.nix
-    ./configs/keymap.nix
-    ./configs/onyr.nix
-    ./configs/packages.nix
-    ./configs/sound.nix
+    ./boot.nix
+    # Other configuration files.
+    ./nvidia.nix
+    ./fonts.nix
+    ./keymap.nix
+    ./onyr.nix
+    ./packages.nix
+    ./sound.nix
     # GUI, desktop, and window manager configuration.
-    ./configs/gui/gnome.nix
-    #./configs/gui/sway.nix
-    #./configs/gui/hyprland.nix
-    ./configs/gui/i3.nix
+    ./gui/gnome.nix
+    ./gui/sway.nix
+    ./gui/hyprland.nix
+    ./gui/i3.nix
   ];
-
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -54,6 +52,12 @@
     LC_TELEPHONE = "fr_FR.UTF-8";
     LC_TIME = "fr_FR.UTF-8";
   };
+
+  # secret management: https://www.reddit.com/r/NixOS/comments/1auje1p/hyprland_and_secrets_management/
+  # Enable the gnome-keyring secrets vault. 
+  # Will be exposed through DBus to programs willing to store secrets.
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
 
   # Enable the X11 windowing system.
   services.displayManager.sddm.enable = true; # supported well by Hyprland

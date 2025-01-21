@@ -8,7 +8,9 @@ Flake is used to make reproducible environnement.
 
 > The repository for my NixOs laptop config can be found [here](https://github.com/0nyr/nixos-config).
 
+##### Rebuild 
 
+`sudo nixos-rebuild switch --flake .#Aezyr-Workstation`: rebuild Aezyr system.
 
 ## TODO
 
