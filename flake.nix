@@ -5,6 +5,9 @@
   inputs = {
     # Official NixOS package source
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    # Minecraft grub2 theme
+    minegrub-theme.url = "github:0nyr/minegrub-theme"; # my fork with some fixes
   };
 
   outputs = {nixpkgs, ...} @ inputs: 
@@ -20,6 +23,7 @@
       system = system;
       modules = [
         ./configuration.nix
+        inputs.minegrub-theme.nixosModules.default
       ];
     };
 

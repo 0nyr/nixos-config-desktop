@@ -21,6 +21,11 @@
       pdfannots2json # command line utility for Obsidian (Zotero Integration plugin)
       krita
       inkscape
+      vlc
+      tenacity # audio editor, fork of Audacity
+
+      # games
+      prismlauncher # For Minecraft
     ];
   };
 }

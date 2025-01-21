@@ -26,9 +26,14 @@
     openvpn # VPN
     openconnect # VPN
     killall # for killing processes
-    #megasync # MEGA cloud sync WARN: wait for freeimage dependency.
+    megasync # MEGA cloud sync WARN: wait for freeimage dependency.
     networkmanagerapplet # for network applet on bar
-    gnupg # for GPG verifs
+    pavucontrol # for advanced sound control
+    alsa-utils # for alsamixer
+    qjackctl # jack audio app to control the JACK sound server daemon
+    qpwgraph # for visualizing PipeWire graph, equivalent to what qjackctl is to JACK
+    pciutils # for PCI utilities (like listing audio cards)
+    hw-probe # for hardware and driver probing $ sudo -E hw-probe -all -upload
     keepassxc # password manager
 
     # Hyprland or Sway (Wayland) packages
@@ -54,7 +59,6 @@
     zoom-us # video conference
     ventoy-full # makebootable usb
     nwg-look # for theming GTK apps
-    qt5ct # for theming QT5 apps
     libsForQt5.qtstyleplugin-kvantum # for theming QT apps
     flameshot # screenshot
     grim # screenshot functionality

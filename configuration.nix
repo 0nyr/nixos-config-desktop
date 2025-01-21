@@ -5,27 +5,24 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [
-      # Include hardware configuration.
-      ./hardware-configuration.nix
-      # Include other configuration files.
-      ./configs/nvidia.nix
-      ./configs/fonts.nix
-      ./configs/keymap.nix
-      ./configs/onyr.nix
-      ./configs/packages.nix
-      ./configs/sound.nix
-      # GUI, desktop, and window manager configuration.
-      ./configs/gui/gnome.nix
-      #./configs/gui/sway.nix
-      #./configs/gui/hyprland.nix
-      ./configs/gui/i3.nix
-    ];
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  imports = [
+    # Boot
+    ./configs/boot.nix
+    # Include hardware configuration.
+    ./hardware-configuration.nix
+    # Include other configuration files.
+    ./configs/nvidia.nix
+    ./configs/fonts.nix
+    ./configs/keymap.nix
+    ./configs/onyr.nix
+    ./configs/packages.nix
+    ./configs/sound.nix
+    # GUI, desktop, and window manager configuration.
+    ./configs/gui/gnome.nix
+    #./configs/gui/sway.nix
+    #./configs/gui/hyprland.nix
+    ./configs/gui/i3.nix
+  ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

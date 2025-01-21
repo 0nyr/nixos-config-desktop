@@ -11,7 +11,7 @@
   ];
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false; # pulseaudio must be disabled when using pipewire
+  services.pulseaudio.enable = false; # pulseaudio must be disabled when using pipewire
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
